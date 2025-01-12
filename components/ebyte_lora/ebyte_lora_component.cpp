@@ -452,8 +452,8 @@ void EbyteLoraComponent::process_(std::vector<uint8_t> data) {
     ESP_LOGD(TAG, "Got some repeater info from network %u setting rssi next", data[2]);
     unknown_key = false;
   }
-  if (first_byte == PROGRAM_CONF) {
-    ESP_LOGD(TAG, "GOT PROGRAM_CONF");
+  if (first_byte == CONF_SET) {
+    ESP_LOGD(TAG, "GOT CONF_SET");
     this->setup_conf_(data);
     this->set_mode_(NORMAL);
     unknown_key = false;
