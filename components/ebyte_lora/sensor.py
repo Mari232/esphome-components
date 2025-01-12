@@ -3,7 +3,7 @@ from esphome.components.sensor import new_sensor, sensor_schema
 from esphome.config_validation import All, has_at_least_one_key
 from esphome.const import CONF_ID
 
-from . import (
+from ... import (
     CONF_NETWORK_ID,
     CONF_REMOTE_ID,
     CONF_EBYTE_LORA_COMPONENT_ID,
