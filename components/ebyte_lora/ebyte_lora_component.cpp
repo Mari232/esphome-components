@@ -315,7 +315,7 @@ void EbyteLoraComponent::request_current_config_() {
     return;
   }
   // program conf command, start at 0 with a size of 8
-  uint8_t data[3] = {PROGRAM_CONF, 0x00, 0x08};
+  uint8_t data[3] = {PROGRAM_CONF, 0xC1, 0xC1};
   this->write_array(data, sizeof(data));
   ESP_LOGD(TAG, "Config info requested");
 }
