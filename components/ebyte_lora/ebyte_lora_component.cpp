@@ -24,6 +24,12 @@ bool EbyteLoraComponent::is_config_right_() {
   if (this->current_config_.air_data_rate != this->expected_config_.air_data_rate) {
     ESP_LOGD(TAG, "air_data_rate is not set right, it should be:");
     switch (this->expected_config_.air_data_rate) {
+      case AIR_0_3KB:
+        ESP_LOGD(TAG, "air_data_rate: 0.3kb");
+        break;
+      case AIR_1_2KB:
+        ESP_LOGD(TAG, "air_data_rate: 1.2kb");
+        break;
       case AIR_2_4KB:
         ESP_LOGD(TAG, "air_data_rate: 2.4kb");
         break;
@@ -35,12 +41,6 @@ bool EbyteLoraComponent::is_config_right_() {
         break;
       case AIR_19_2KB:
         ESP_LOGD(TAG, "air_data_rate: 19.2kb");
-        break;
-      case AIR_38_4KB:
-        ESP_LOGD(TAG, "air_data_rate: 38.4kb");
-        break;
-      case AIR_62_5KB:
-        ESP_LOGD(TAG, "air_data_rate: 62.5kb");
         break;
     }
     return false;
@@ -108,35 +108,35 @@ bool EbyteLoraComponent::is_config_right_() {
     }
     return false;
   }
-  if (this->current_config_.rssi_noise != this->expected_config_.rssi_noise) {
-    ESP_LOGD(TAG, "rssi_noise is not set right, it should be:");
-    switch (this->expected_config_.rssi_noise) {
-      case EBYTE_ENABLED:
-        ESP_LOGD(TAG, "rssi_noise: ENABLED");
-        break;
-      case EBYTE_DISABLED:
-        ESP_LOGD(TAG, "rssi_noise: DISABLED");
-        break;
-    }
-    return false;
-  }
-  if (this->current_config_.sub_packet != this->expected_config_.sub_packet) {
-    ESP_LOGD(TAG, "sub_packet is not set right, it should be:");
-    switch (this->expected_config_.sub_packet) {
-      case SUB_200B:
-        ESP_LOGD(TAG, "sub_packet: 200 bytes");
-        break;
-      case SUB_128B:
-        ESP_LOGD(TAG, "sub_packet: 128 bytes");
-        break;
-      case SUB_64B:
-        ESP_LOGD(TAG, "sub_packet: 64 bytes");
-        break;
-      case SUB_32B:
-        ESP_LOGD(TAG, "sub_packet: 32 bytes");
-        break;
-    }
-    return false;
+  // if (this->current_config_.rssi_noise != this->expected_config_.rssi_noise) {
+  //   ESP_LOGD(TAG, "rssi_noise is not set right, it should be:");
+  //   switch (this->expected_config_.rssi_noise) {
+  //     case EBYTE_ENABLED:
+  //       ESP_LOGD(TAG, "rssi_noise: ENABLED");
+  //       break;
+  //     case EBYTE_DISABLED:
+  //       ESP_LOGD(TAG, "rssi_noise: DISABLED");
+  //       break;
+  //   }
+  //   return false;
+  // }
+  // if (this->current_config_.sub_packet != this->expected_config_.sub_packet) {
+  //   ESP_LOGD(TAG, "sub_packet is not set right, it should be:");
+  //   switch (this->expected_config_.sub_packet) {
+  //     case SUB_200B:
+  //       ESP_LOGD(TAG, "sub_packet: 200 bytes");
+  //       break;
+  //     case SUB_128B:
+  //       ESP_LOGD(TAG, "sub_packet: 128 bytes");
+  //       break;
+  //     case SUB_64B:
+  //       ESP_LOGD(TAG, "sub_packet: 64 bytes");
+  //       break;
+  //     case SUB_32B:
+  //       ESP_LOGD(TAG, "sub_packet: 32 bytes");
+  //       break;
+  //   }
+  //   return false;
   }
   if (this->current_config_.channel != this->expected_config_.channel) {
     ESP_LOGD(TAG, "channel is not set right is %u, should be %u", this->current_config_.channel,
@@ -146,41 +146,41 @@ bool EbyteLoraComponent::is_config_right_() {
   if (this->current_config_.wor_period != this->expected_config_.wor_period) {
     ESP_LOGD(TAG, "wor_period is not set right, it should be:");
     switch (this->expected_config_.wor_period) {
+      case WOR_250:
+        ESP_LOGD(TAG, "wor_period: 250");
+        break;
       case WOR_500:
         ESP_LOGD(TAG, "wor_period: 500");
+        break;
+      case WOR_750:
+        ESP_LOGD(TAG, "wor_period: 750");
         break;
       case WOR_1000:
         ESP_LOGD(TAG, "wor_period: 1000");
         break;
+      case WOR_1250:
+        ESP_LOGD(TAG, "wor_period: 1250");
+        break;
       case WOR_1500:
         ESP_LOGD(TAG, "wor_period: 1500");
+        break;
+      case WOR_1750:
+        ESP_LOGD(TAG, "wor_period: 1750");
         break;
       case WOR_2000:
         ESP_LOGD(TAG, "wor_period: 2000");
         break;
-      case WOR_2500:
-        ESP_LOGD(TAG, "wor_period: 2500");
-        break;
-      case WOR_3000:
-        ESP_LOGD(TAG, "wor_period: 3000");
-        break;
-      case WOR_3500:
-        ESP_LOGD(TAG, "wor_period: 3500");
-        break;
-      case WOR_4000:
-        ESP_LOGD(TAG, "wor_period: 4000");
-        break;
     }
     return false;
   }
-  if (this->current_config_.enable_lbt != this->expected_config_.enable_lbt) {
-    ESP_LOGD(TAG, "enable_lbt is not set right, it should be:");
-    switch (this->current_config_.enable_lbt) {
-      case EBYTE_ENABLED:
-        ESP_LOGD(TAG, "enable_lbt: ENABLED");
+  if (this->current_config_.enable_FEC != this->expected_config_.enable_FEC) {
+    ESP_LOGD(TAG, "enable_FEC is not set right, it should be:");
+    switch (this->current_config_.enable_FEC) {
+      case FEC_ENABLED:
+        ESP_LOGD(TAG, "enable_FEC: ENABLED");
         break;
-      case EBYTE_DISABLED:
-        ESP_LOGD(TAG, "enable_lbt: DISABLED");
+      case FEC_DISABLED:
+        ESP_LOGD(TAG, "enable_FEC: DISABLED");
         break;
     }
     return false;
@@ -198,72 +198,60 @@ bool EbyteLoraComponent::is_config_right_() {
     return false;
   }
 
-  if (this->current_config_.enable_rssi != this->expected_config_.enable_rssi) {
-    ESP_LOGD(TAG, "enable_rssi is not set right, it should be:");
-    switch (this->expected_config_.enable_rssi) {
-      case EBYTE_ENABLED:
-        ESP_LOGD(TAG, "enable_rssi: ENABLED");
-        break;
-      case EBYTE_DISABLED:
-        ESP_LOGD(TAG, "enable_rssi: DISABLED");
-        break;
-    }
-    return false;
-  }
+  // if (this->current_config_.enable_rssi != this->expected_config_.enable_rssi) {
+  //   ESP_LOGD(TAG, "enable_rssi is not set right, it should be:");
+  //   switch (this->expected_config_.enable_rssi) {
+  //     case EBYTE_ENABLED:
+  //       ESP_LOGD(TAG, "enable_rssi: ENABLED");
+  //       break;
+  //     case EBYTE_DISABLED:
+  //       ESP_LOGD(TAG, "enable_rssi: DISABLED");
+  //       break;
+  //   }
+  //   return false;
+  // }
   return true;
 }
 void EbyteLoraComponent::setup_conf_(std::vector<uint8_t> conf) {
-  // 3 is addh
-  this->current_config_.addh = conf[3];
-  // 4 is addl
-  this->current_config_.addl = conf[4];
-  // 5 is reg0, which is air_data for first 3 bits, then parity for 2, uart_baud for 3
-  ESP_LOGD(TAG, "reg0: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[5]));
-  this->current_config_.air_data_rate = (conf[5] >> 0) & 0b111;
-  this->current_config_.parity = (conf[5] >> 3) & 0b11;
-  this->current_config_.uart_baud = (conf[5] >> 5) & 0b111;
-  // 6 is reg1; transmission_power : 2, reserve : 3, rssi_noise : 1, sub_packet : 2
-  ESP_LOGD(TAG, "reg1: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[6]));
-  this->current_config_.transmission_power = (conf[6] >> 0) & 0b11;
-  this->current_config_.rssi_noise = (conf[6] >> 5) & 0b1;
-  this->current_config_.sub_packet = (conf[6] >> 6) & 0b11;
-  // 7 is reg2; channel
-  this->current_config_.channel = conf[7];
-  // 8 is reg3; wor_period:3, reserve:1, enable_lbt:1, reserve:1, transmission_mode:1, enable_rssi:1
-  ESP_LOGD(TAG, "reg3: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[8]));
-  this->current_config_.wor_period = (conf[8] >> 0) & 0b111;
-  this->current_config_.enable_lbt = (conf[8] >> 4) & 0b1;
-  this->current_config_.transmission_mode = (conf[8] >> 6) & 0b1;
-  this->current_config_.enable_rssi = (conf[8] >> 7) & 0b1;
+  // 1 is addh
+  this->current_config_.addh = conf[1];
+  // 2 is addl
+  this->current_config_.addl = conf[2];
+  // 3 is SPED, which is air_data for first 3 bits, then parity for 2, uart_baud for 3
+  ESP_LOGD(TAG, "reg0: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[3]));
+  this->current_config_.air_data_rate = (conf[3] >> 0) & 0b111;
+  this->current_config_.parity = (conf[3] >> 6) & 0b11;
+  this->current_config_.uart_baud = (conf[3] >> 3) & 0b111;
+  // 4 is CHAN; channel
+  ESP_LOGD(TAG, "reg1: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[4]));
+  this->current_config_.channel = (conf[4] >> 5) & 0b111;
+  // 5 is OPTION; transmission mode, io mode, wake up time, FEC, Transmission power
+  ESP_LOGD(TAG, "reg3: %c%c%c%c%c%c%c%c", BYTE_TO_BINARY(conf[5]));
+  this->current_config_.wor_period = (conf[5] >> 3) & 0b111;
+  this->current_config_.enable_FEC = (conf[5] >> 2) & 0b1;
+  this->current_config_.transmission_mode = (conf[5] >> 7) & 0b1;
+  this->current_config_.io_mode = (conf[5] >> 6) & 0b1;
+  this->current_config.transmission_power = (conf[5] >> 0) & 0b11;
   ESP_LOGD(TAG, "Config set");
   this->current_config_.config_set = true;
 }
 void EbyteLoraComponent::set_config_() {
-  uint8_t data[11];
+  uint8_t data[6];
   // set register
-  data[0] = 0xC0;
-  // where to start, 0 always
-  data[1] = 0;
-  // length, 8 bytes (3 start bytes don't count)
-  data[2] = 8;
-  // 3 is addh
-  data[3] = this->expected_config_.addh;
-  // 4 is addl
-  data[4] = this->expected_config_.addl;
-  // 5 is reg0, which is air_data for first 3 bits, then parity for 2, uart_baud for 3
-  data[5] = (this->expected_config_.uart_baud << 5) | (this->expected_config_.parity << 3) |
-            (this->expected_config_.air_data_rate << 0);
-  // 6 is reg1; transmission_power : 2, reserve : 3, rssi_noise : 1, sub_packet : 2
-  data[6] = (this->expected_config_.sub_packet << 6) | (this->expected_config_.rssi_noise << 5) |
-            (this->expected_config_.transmission_power << 0);
-  // 7 is reg2; channel
-  data[7] = this->expected_config_.channel;
-  // 8 is reg3; wor_period:3, reserve:1, enable_lbt:1, reserve:1, transmission_mode:1, enable_rssi:1
-  data[8] = (this->expected_config_.enable_rssi << 7) | (this->expected_config_.transmission_mode << 6) |
-            (this->expected_config_.enable_lbt << 4) | (this->expected_config_.wor_period << 0);
+  data[0] = 0xC2;
+  // 1 is addh
+  data[1] = this->expected_config_.addh;
+  // 2 is addl
+  data[2] = this->expected_config_.addl;
+  // 3 is SPED, which is air_data for first 3 bits, then parity for 2, uart_baud for 3
+  data[3] = (this->expected_config_.uart_baud << 3) | (this->expected_config_.parity << 6) |
+            (this->expected_config_.air_data_rate << 0); // CORRECTED
+  // 4 is CHAN
+  data[4] = (this->expected_config_.channel << 5);
+  // 5 is OPTION; transmission mode, io mode, wake up time, FEC, Transmission power
+  data[5] = (this->expected_config_.wor_period << 3) | (this->expected_config_.transmission_mode << 7) |
+            (this->expected_config_.enable_FEC << 2) | (this->expected_config_.io_mode << 6) | (this->expected_config_.transmission_power << 0);
   // crypt stuff make 0 for now
-  data[9] = 0;
-  data[10] = 0;
   this->set_mode_(CONFIGURATION);
   this->write_array(data, sizeof(data));
 }

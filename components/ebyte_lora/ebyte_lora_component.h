@@ -80,13 +80,13 @@ class EbyteLoraComponent : public PollingComponent, public uart::UARTDevice {
   void set_uart_parity(UartParitySetting parity) { expected_config_.parity = parity; }
   void set_uart_bps(UartBpsSpeed bps_speed) { expected_config_.uart_baud = bps_speed; }
   void set_transmission_power(TransmissionPower power) { expected_config_.transmission_power = power; }
-  void set_rssi_noise(EnableByte enable) { expected_config_.rssi_noise = enable; }
-  void set_sub_packet(SubPacketSetting sub_packet) { expected_config_.sub_packet = sub_packet; }
+  //void set_rssi_noise(EnableByte enable) { expected_config_.rssi_noise = enable; }
+  //void set_sub_packet(SubPacketSetting sub_packet) { expected_config_.sub_packet = sub_packet; }
   void set_channel(uint8_t channel) { expected_config_.channel = channel; }
   void set_wor(WorPeriod wor) { expected_config_.wor_period = wor; }
-  void set_enable_lbt(EnableByte enable) { expected_config_.enable_lbt = enable; }
+  void set_enable_FEC(EnableByte enable) { expected_config_.enable_lbt = enable; }
   void set_transmission_mode(TransmissionMode mode) { expected_config_.transmission_mode = mode; }
-  void set_enable_rssi(EnableByte enable) { expected_config_.enable_rssi = enable; }
+  //void set_enable_rssi(EnableByte enable) { expected_config_.enable_rssi = enable; }
   void set_recycle_time(uint32_t recycle_time) { this->recyle_time_ = recycle_time; }
   // if enabled, will repeat any message it received as long as it isn't its own network id
   void set_repeater(bool enable) { repeater_enabled_ = enable; }
