@@ -7,6 +7,7 @@ static const uint8_t REQUEST_REPEATER_INFO = 0x88;
 static const uint8_t REPEATER_INFO = 0x99;
 static const uint8_t REPEATER_KEY = 0x99;
 static const uint8_t PROGRAM_CONF = 0xC1;
+static const uint8_t CONF_SET = 0xC0;
 static const uint8_t BINARY_SENSOR_KEY = 0x66;
 static const uint8_t SENSOR_KEY = 0x77;
 bool EbyteLoraComponent::is_config_right_() {
